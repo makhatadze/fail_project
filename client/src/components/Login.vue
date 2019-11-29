@@ -7,11 +7,6 @@
           name="tab-tracker-form"
           autocomplete="off">
           <v-text-field
-            label="Name"
-            v-model="name"
-          ></v-text-field>
-          <br>
-          <v-text-field
             label="Email"
             v-model="email"
           ></v-text-field>
@@ -29,8 +24,8 @@
         <v-btn
           dark
           class="cyan"
-          @click="register">
-          Register
+          @click="login">
+          Login
         </v-btn>
       </panel>
     </v-flex>
@@ -43,32 +38,28 @@
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
 export default {
-  name: 'register',
-   data () {
+  name: 'login',
+  data () {
     return {
-      name: '',
       email: '',
       password: '',
       error: null,
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        const response = await AuthenticationService.register({
-        name: this.name,
+        const response = await AuthenticationService.login({
         email: this.email,
         password: this.password,
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
-
       } catch (error){
-        this.error = error.response.data.errors
+        this.error = 'password or email is incorect'
       }
     }
   }
-  
 }
 </script>
 
