@@ -5,7 +5,12 @@ const jwt = require('jsonwebtoken')
 const Task = require('./task')
 
 const userSchema = new mongoose.Schema({
-    name: {
+    firstName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    lastName: {
         type: String,
         required: true,
         trim: true
@@ -25,7 +30,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 7,
+        minlength: 3,
         trim: true,
         validate(value) {
             if (value.toLowerCase().includes('password')) {
@@ -33,14 +38,9 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
-    age: {
-        type: Number,
-        default: 0,
-        validate(value) {
-            if (value < 0) {
-                throw new Error('Age must be a postive number')
-            }
-        }
+    gender: {
+        type: String,
+        required: true
     },
     tokens: [{
         token: {

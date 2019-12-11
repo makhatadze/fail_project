@@ -5,14 +5,25 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import { sync } from 'vuex-router-sync'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
+import VueYouTubeEmbed from 'vue-youtube-embed'
+import Panel from '@/components/globals/Panel'
+import ElementUi from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
+Vue.use(BootstrapVue)
+Vue.use(VueYouTubeEmbed)
+Vue.use(ElementUi)
 
-// eslint-disable-next-line no-undef
+Vue.component('panel', Panel)
+
 sync(store, router)
 
 /* eslint-disable no-new */
@@ -20,6 +31,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  components: { App }
 })
