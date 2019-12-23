@@ -11,7 +11,6 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
 import VueYouTubeEmbed from 'vue-youtube-embed'
-import Panel from '@/components/globals/Panel'
 import ElementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -21,8 +20,6 @@ Vue.use(Vuetify)
 Vue.use(BootstrapVue)
 Vue.use(VueYouTubeEmbed)
 Vue.use(ElementUi)
-
-Vue.component('panel', Panel)
 
 sync(store, router)
 

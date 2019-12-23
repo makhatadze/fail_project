@@ -11,8 +11,15 @@
           @click="true"
           active-text-color="#ffd04b">
           <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span>Navigator Two</span>
+            <router-link
+              class="home"
+              tag="span"
+              :to="{
+                name: '/'
+              }">
+              <i class="el-icon-setting"></i>
+              Books
+            </router-link>
           </el-menu-item>
           <el-menu-item index="7" v-if="!$store.state.isUserLoggedIn">
             <router-link
@@ -60,19 +67,18 @@
       </el-aside>
       <el-container>
         <el-header>
-          <el-menu class="el-menu-demo" mode="horizontal"
-          >
-<!--            <el-menu-item index="1" route="{name: register }">Processing Center</el-menu-item>-->
-<!--            <el-menu-item index="2" v-if="$store.state.isUserLoggedIn">-->
-<!--              <template slot="title">-->
-<!--                <a v-on:click="logout"><i class="el-icon-switch-button"></i>Log out</a>-->
-<!--              </template>-->
-<!--            </el-menu-item>-->
-          </el-menu>
+            <el-menu-item index="1" route="{name: register }">Processing Center</el-menu-item>
+            <el-menu-item index="2" v-if="$store.state.isUserLoggedIn">
+              <template slot="title">
+                <a v-on:click="logout"><i class="el-icon-switch-button"></i>Log out</a>
+              </template>
+            </el-menu-item>
         </el-header>
-        <el-main>
-          <router-view></router-view>
-        </el-main>
+        <el-container>
+          <el-main>
+            <router-view></router-view>
+          </el-main>
+        </el-container>
       </el-container>
     </el-container>
   </div>
